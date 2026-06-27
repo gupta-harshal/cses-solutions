@@ -35,7 +35,7 @@
 import java.util.*;
 import java.io.*;
 
-public class GridPaths {
+public class GridPaths extends MyTemplate {
     public static void main(String[] args) throws IOException {
         MyTemplate.FastIO jio = new MyTemplate().new FastIO();
         int n = jio.nextInt();

@@ -35,7 +35,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Test {
+public class ArrayDescription {
     public static void main(String[] args) throws IOException {
         MyTemplate.FastIO jio = new MyTemplate().new FastIO();
         
