@@ -35,7 +35,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Test extends MyTemplate.Calc {
+public class ConcertTickets extends MyTemplate.Calc {
     public static void main(String[] args) throws IOException {
         MyTemplate.FastIO jio = new MyTemplate().new FastIO();
         int n = jio.nextInt();
