@@ -35,35 +35,31 @@
 import java.io.*;
 import java.util.*;
 
-public class Test extends MyTemplate.Calc {
+public class Main extends MyTemplate.Calc {
     public static void main(String[] args) throws IOException {
         MyTemplate.FastIO jio = new MyTemplate().new FastIO();
         int n = jio.nextInt();
-        int m = jio.nextInt();
 
-        TreeMap<Integer, Integer> tickets = new TreeMap<>();
+        List<int[]> events = new ArrayList<>(2 * n);
+
         for (int i = 0; i < n; i++) {
-            int h = jio.nextInt();
-            tickets.put(h, tickets.getOrDefault(h, 0) + 1);
+            int arrival = jio.nextInt();
+            int leaving = jio.nextInt();
+            events.add(new int[]{arrival, 1});
+            events.add(new int[]{leaving, -1});
         }
 
-        for (int i = 0; i < m; i++) {
-            int maxPrice = jio.nextInt();
-            Integer bestTicket = tickets.floorKey(maxPrice);
+        Collections.sort(events, (x, y) -> Integer.compare(x[0], y[0]));
 
-            if (bestTicket == null) {
-                jio.println("-1");
-            } else {
-                jio.println(bestTicket);
-                int count = tickets.get(bestTicket);
-                if (count == 1) {
-                    tickets.remove(bestTicket);
-                } else {
-                    tickets.put(bestTicket, count - 1);
-                }
-            }
+        int curr = 0;
+        int maxCustomers = 0;
+
+        for (int[] event : events) {
+            curr += event[1];
+            maxCustomers = Math.max(maxCustomers, curr);
         }
 
+        jio.println(maxCustomers);
         jio.flush();
     }
 }
